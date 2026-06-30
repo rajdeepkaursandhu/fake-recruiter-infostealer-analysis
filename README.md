@@ -1,4 +1,4 @@
-# Anatomy of a Fake-Recruiter Infostealer Attack — the "Block3 / Werknova" Web3 Job Scam
+# Anatomy of a Fake-Recruiter Infostealer Attack — the Web3 Job Scam
 
 > A technical incident report and threat analysis of a spear-phishing campaign targeting active job seekers. The lure is a fake Web3 recruiting process; the payload is an **ACRStealer** infostealer disguised as a "desktop meeting app." This write-up reconstructs the full attack chain, analyzes the malware and infrastructure, maps it to MITRE ATT&CK, and documents the defensive controls that contained it.
 
