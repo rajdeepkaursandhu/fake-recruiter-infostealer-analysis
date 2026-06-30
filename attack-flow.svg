@@ -1,0 +1,50 @@
+<svg viewBox="0 0 1540 880" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+<defs>
+<filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.28"/></filter>
+<marker id="arw" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#3b4658"/></marker>
+<marker id="arwR" markerWidth="13" markerHeight="13" refX="9" refY="5" orient="auto"><path d="M0,0 L11,5 L0,10 z" fill="#b00020"/></marker>
+</defs>
+<rect width="1540" height="880" fill="#ffffff"/>
+<text x="770.0" y="44" text-anchor="middle" font-size="23" font-weight="700" fill="#0f1b2d">Attack Flow — “Block3 / Werknova” Fake-Recruiter Infostealer Campaign</text>
+<text x="770.0" y="70" text-anchor="middle" font-size="13" fill="#5b6470">C4-style overview · indicators defanged · ACRStealer (MaaS) delivered via a rogue meeting app</text>
+<rect x="285" y="120" width="1225" height="735" rx="14" fill="none" stroke="#b00020" stroke-width="1.5" stroke-dasharray="9 7" opacity="0.6"/>
+<text x="302" y="142" font-size="13" font-weight="600" fill="#b00020" opacity="0.9">Attacker-controlled infrastructure (one operator — shared Cloudflare NS)</text>
+<line x1="190" y1="229" x2="310" y2="229" stroke="#3b4658" stroke-width="2" marker-end="url(#arw)"/>
+<rect x="190.3" y="200.0" width="119.4" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="250.0" y="215.0" text-anchor="middle" font-size="11" fill="#33405a">1  applies to job</text>
+<line x1="510" y1="229" x2="630" y2="229" stroke="#3b4658" stroke-width="2" marker-end="url(#arw)"/>
+<rect x="485.5" y="200.0" width="169.0" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="570.0" y="215.0" text-anchor="middle" font-size="11" fill="#33405a">2  “we like your profile”</text>
+<line x1="830" y1="229" x2="950" y2="229" stroke="#3b4658" stroke-width="2" marker-end="url(#arw)"/>
+<rect x="805.5" y="200.0" width="169.0" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="890.0" y="215.0" text-anchor="middle" font-size="11" fill="#33405a">3  booking + meeting link</text>
+<line x1="1050" y1="288" x2="1050" y2="370" stroke="#3b4658" stroke-width="2" marker-end="url(#arw)"/>
+<rect x="953.1" y="318.0" width="193.8" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="1050.0" y="333.0" text-anchor="middle" font-size="11" fill="#33405a">4  “mic broken → install app”</text>
+<line x1="1050" y1="498" x2="1050" y2="610" stroke="#3b4658" stroke-width="2" marker-end="url(#arw)"/>
+<rect x="962.4" y="543.0" width="175.20000000000002" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="1050.0" y="558.0" text-anchor="middle" font-size="11" fill="#33405a">5  executed → stealer runs</text>
+<line x1="1150" y1="680" x2="1270" y2="680" stroke="#3b4658" stroke-width="2" marker-end="url(#arw)"/>
+<rect x="1141.0" y="637" width="138.0" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="1210" y="652" text-anchor="middle" font-size="11" fill="#33405a">6  C2 beacon / exfil</text>
+<line x1="1195" y1="663" x2="1225" y2="697" stroke="#b00020" stroke-width="4"/>
+<line x1="1225" y1="663" x2="1195" y2="697" stroke="#b00020" stroke-width="4"/>
+<line x1="1210" y1="770" x2="1210" y2="702" stroke="#b00020" stroke-width="1.5" stroke-dasharray="5 4"/>
+<g filter="url(#sh)"><rect x="1015" y="770" width="380" height="66" rx="9" fill="#2e7d32" stroke="#1b5e20" stroke-width="1.5"/><text x="1205.0" y="804" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Router — Trend Micro Home Network Security</text><text x="1205.0" y="822" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Security control — C2 BLOCKED]</text><text x="1205.0" y="844" text-anchor="middle" font-size="11" fill="#d7dee8"></text></g>
+<path d="M 700 170 C 600 100, 250 100, 150 158" fill="none" stroke="#b00020" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arwR)" opacity="0.8"/>
+<rect x="258.3" y="89" width="243.4" height="22" rx="5" fill="#f1f4f8" stroke="#d7dee8"/><text x="380" y="104" text-anchor="middle" font-size="11" fill="#b00020">↺  day +1: “second opportunity” retry</text>
+<g filter="url(#sh)"><circle cx="115.0" cy="160" r="20" fill="#08427B" stroke="#06335f" stroke-width="1.5"/><rect x="40" y="170" width="150" height="118" rx="9" fill="#08427B" stroke="#06335f" stroke-width="1.5"/><text x="115.0" y="204" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Job Seeker</text><text x="115.0" y="222" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Person · Target]</text><text x="115.0" y="244" text-anchor="middle" font-size="11" fill="#d7dee8">Active LinkedIn job</text><text x="115.0" y="259" text-anchor="middle" font-size="11" fill="#d7dee8">search (Web3 roles)</text></g>
+<g filter="url(#sh)"><rect x="310" y="170" width="200" height="118" rx="9" fill="#7d1d1d" stroke="#561111" stroke-width="1.5"/><text x="410.0" y="204" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Fake Company + LinkedIn</text><text x="410.0" y="222" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Malicious site]</text><text x="410.0" y="244" text-anchor="middle" font-size="11" fill="#d7dee8">block3[.]co · 6-wk-old</text><text x="410.0" y="259" text-anchor="middle" font-size="11" fill="#d7dee8">impersonates real brand</text></g>
+<g filter="url(#sh)"><rect x="630" y="170" width="200" height="118" rx="9" fill="#7d1d1d" stroke="#561111" stroke-width="1.5"/><text x="730.0" y="204" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Recruiter Email</text><text x="730.0" y="222" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Malicious sender]</text><text x="730.0" y="244" text-anchor="middle" font-size="11" fill="#d7dee8">Amazon SES ·</text><text x="730.0" y="259" text-anchor="middle" font-size="11" fill="#d7dee8">valid SPF/DKIM/DMARC</text></g>
+<g filter="url(#sh)"><rect x="950" y="170" width="200" height="118" rx="9" fill="#7d1d1d" stroke="#561111" stroke-width="1.5"/><text x="1050.0" y="204" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Rogue Meeting App</text><text x="1050.0" y="222" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Malicious site]</text><text x="1050.0" y="244" text-anchor="middle" font-size="11" fill="#d7dee8">werknova[.]co/.app</text><text x="1050.0" y="259" text-anchor="middle" font-size="11" fill="#d7dee8">3-day-old · access code</text></g>
+<g filter="url(#sh)"><rect x="950" y="370" width="200" height="128" rx="9" fill="#9a3412" stroke="#6b240c" stroke-width="1.5"/><text x="1050.0" y="404" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Malware Dropper</text><text x="1050.0" y="422" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Payload]</text><text x="1050.0" y="444" text-anchor="middle" font-size="11" fill="#d7dee8">werknova_setup.msi</text><text x="1050.0" y="459" text-anchor="middle" font-size="11" fill="#d7dee8">ACRStealer infostealer</text></g>
+<g filter="url(#sh)"><rect x="950" y="610" width="200" height="140" rx="9" fill="#1168BD" stroke="#0b4a86" stroke-width="1.5"/><text x="1050.0" y="644" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">Victim Host</text><text x="1050.0" y="662" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Windows 11]</text><text x="1050.0" y="684" text-anchor="middle" font-size="11" fill="#d7dee8">DLL sideload via</text><text x="1050.0" y="699" text-anchor="middle" font-size="11" fill="#d7dee8">draw.io.exe</text></g>
+<g filter="url(#sh)"><rect x="1270" y="610" width="200" height="140" rx="9" fill="#5b1262" stroke="#3d0c42" stroke-width="1.5"/><text x="1370.0" y="644" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">C2 Server</text><text x="1370.0" y="662" text-anchor="middle" font-size="10.5" font-style="italic" fill="#d7dee8">[Attacker infra]</text><text x="1370.0" y="684" text-anchor="middle" font-size="11" fill="#d7dee8">jarlontravon[.]com</text><text x="1370.0" y="699" text-anchor="middle" font-size="11" fill="#d7dee8">104.21.33[.]210</text></g>
+<text x="40" y="548" font-size="12" font-weight="700" fill="#0f1b2d">Legend</text>
+<rect x="40" y="560" width="18" height="14" rx="3" fill="#08427B"/>
+<text x="66" y="572" font-size="11.5" fill="#33405a">Person / target</text>
+<rect x="40" y="586" width="18" height="14" rx="3" fill="#7d1d1d"/>
+<text x="66" y="598" font-size="11.5" fill="#33405a">Malicious infrastructure</text>
+<rect x="40" y="612" width="18" height="14" rx="3" fill="#9a3412"/>
+<text x="66" y="624" font-size="11.5" fill="#33405a">Malware payload</text>
+<rect x="40" y="638" width="18" height="14" rx="3" fill="#1168BD"/>
+<text x="66" y="650" font-size="11.5" fill="#33405a">Victim asset</text>
+<rect x="40" y="664" width="18" height="14" rx="3" fill="#5b1262"/>
+<text x="66" y="676" font-size="11.5" fill="#33405a">Command &amp; control</text>
+<rect x="40" y="690" width="18" height="14" rx="3" fill="#2e7d32"/>
+<text x="66" y="702" font-size="11.5" fill="#33405a">Security control</text>
+</svg>
