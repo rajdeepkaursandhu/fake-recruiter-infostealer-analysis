@@ -87,10 +87,6 @@ flowchart TD
 **Block3** reuses the branding of a *real* UK blockchain consultancy ("block3," Nottingham). The attacker's LinkedIn page is near-empty: **0% employee growth**, a flat hiring-trend line, and no credible staff. Pivoting on the "Block3" contact in Outlook surfaced a single unrelated LinkedIn match — a cashier in South Africa — i.e., no real corporate footprint behind the name.
 
 
-<img src="company_linkedin_almost_empty_suspicious.jpeg" alt="Hollow 'Block3' LinkedIn page (0% employee growth)" width="840">
-
-*Hollow "Block3" LinkedIn page (0% employee growth)*
-
 
 <img src="company_domain_employees_linkedin_app_outlook.png" alt="Outlook contact enrichment — no real footprint" width="840">
 
