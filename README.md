@@ -1,4 +1,4 @@
-# Anatomy of a Fake-Recruiter Infostealer Attack — the Web3 Job Scam
+# Anatomy of a Fake-Recruiter Infostealer Attack — the "Block3 / Werknova" Web3 Job Scam
 
 > A technical incident report and threat analysis of a spear-phishing campaign targeting active job seekers. The lure is a fake Web3 recruiting process; the payload is an **ACRStealer** infostealer disguised as a "desktop meeting app." This write-up reconstructs the full attack chain, analyzes the malware and infrastructure, maps it to MITRE ATT&CK, and documents the defensive controls that contained it.
 
@@ -33,11 +33,16 @@ This pattern — fake recruiter → fake interview → "install our app/tool" �
 
 ## The attack chain
 
-![Attack flow — C4-style model](diagrams/attack-flow.svg)
+![Attack flow — C4-style model](attack-flow.svg)
 
-> Editable source: [`diagrams/attack-flow.drawio`](diagrams/attack-flow.drawio) — open in [draw.io / diagrams.net](https://app.diagrams.net). (Fittingly, `draw.io` is also the binary the malware abused for DLL sideloading.)
+> Editable source: [`attack-flow.drawio`](attack-flow.drawio) — open in [draw.io / diagrams.net](https://app.diagrams.net). (Fittingly, `draw.io` is also the binary the malware abused for DLL sideloading.)
 
-> **SOC-style architecture view:** [`diagrams/soc-incident-architecture.svg`](diagrams/soc-incident-architecture.svg) — defense-in-depth layers, the analyst response pipeline, and the reporting / intel-sharing outputs in a single map.
+> **SOC-style architecture view:** [`soc-incident-architecture.svg`](soc-incident-architecture.svg) — defense-in-depth layers, the analyst response pipeline, and the reporting / intel-sharing outputs in a single map.
+
+<img src="soc-incident-architecture.png" alt="SOC-style incident architecture" width="960">
+
+*SOC-style architecture view — defense-in-depth layers (what held vs. what the attack slipped past), the analyst response pipeline, and the reporting / intel-sharing outputs.*
+
 
 <details>
 <summary>Text version (Mermaid)</summary>
@@ -81,8 +86,16 @@ flowchart TD
 
 **Block3** reuses the branding of a *real* UK blockchain consultancy ("block3," Nottingham). The attacker's LinkedIn page is near-empty: **0% employee growth**, a flat hiring-trend line, and no credible staff. Pivoting on the "Block3" contact in Outlook surfaced a single unrelated LinkedIn match — a cashier in South Africa — i.e., no real corporate footprint behind the name.
 
-- `company_linkedin_almost_empty_suspicious.jpeg` — hollow LinkedIn company page
-- `company_domain_employees_linkedin_app_outlook.png` — Outlook contact enrichment shows no legitimate match
+
+<img src="company_linkedin_almost_empty_suspicious.jpeg" alt="Hollow 'Block3' LinkedIn page (0% employee growth)" width="840">
+
+*Hollow "Block3" LinkedIn page (0% employee growth)*
+
+
+<img src="company_domain_employees_linkedin_app_outlook.png" alt="Outlook contact enrichment — no real footprint" width="840">
+
+*Outlook contact enrichment — no real footprint*
+
 
 ### 2. Domain & infrastructure
 
@@ -97,7 +110,15 @@ flowchart TD
 
 **Both domains share the identical Cloudflare nameserver pair** — strong evidence of a single operator running one campaign. Brand-new, single-year registrations behind a CDN, with privacy-shielded registrant data, are textbook disposable phishing infrastructure.
 
-- `whois_company_domain.png`, `whois_invite_domain.png`
+
+<img src="whois_company_domain.png" alt="WHOIS — block3[.]co (created ~6 weeks before contact)" width="840">
+
+*WHOIS — block3[.]co (created ~6 weeks before contact)*
+
+<img src="whois_invite_domain.png" alt="WHOIS — werknova[.]co (created 3 days before the call)" width="840">
+
+*WHOIS — werknova[.]co (created 3 days before the call)*
+
 
 ### 3. The payload — ACRStealer
 
@@ -115,7 +136,15 @@ flowchart TD
 
 It uses a **Dead Drop Resolver (DDR)**: the real C2 address is Base64-encoded and hidden on a legitimate service (Google Docs, Steam, telegra.ph, etc.), which the malware fetches before contacting the actual C2. This is relevant to the containment assessment below — perimeter blocking of one known-bad domain does not guarantee the malware could not resolve an alternate C2 through a trusted intermediary that a firewall would not block. Late-January-2026 builds further added ECDH + ChaCha20-Poly1305 encrypted C2, TLS comms, and syscall-based evasion (Heaven's Gate), indicating an actively maintained family.
 
-- `HybridAnalysis_company_domain.png`, `HybridAnalysis_invite_domain.png`
+
+<img src="HybridAnalysis_company_domain.png" alt="Hybrid Analysis — block3[.]co malicious" width="840">
+
+*Hybrid Analysis — block3[.]co malicious*
+
+<img src="HybridAnalysis_invite_domain.png" alt="Hybrid Analysis — werknova[.]co malicious" width="840">
+
+*Hybrid Analysis — werknova[.]co malicious*
+
 
 ### 4. Command-and-control / network behaviour
 
@@ -126,10 +155,26 @@ It uses a **Dead Drop Resolver (DDR)**: the real C2 address is Base64-encoded an
 | Additional contacted IPs (flagged) | `217.20.50[.]151`, `217.20.50[.]153` (AS20253) — blocked by Bitdefender Web Protection |
 | Benign noise (do **not** report) | `repository.certum[.]pl`, `subca.ocsp-certum[.]com`, `*.ocsp-certum[.]com` — legitimate **Certum CA / OCSP** endpoints contacted for certificate-revocation checks. Distinguishing this benign infrastructure from the malicious C2 is part of the analysis. |
 
-- `virustotal_c_c_url-ip.png` — VirusTotal: `jarlontravon[.]com` flagged
-- `testing_other_domains_edgeserver_domains_blockedby_bitdefender.png` — sample's contacted IPs + Bitdefender blocks
-- `c_c_blocked_router_firewall.png` — Trend Micro "Dangerous Page — C&C Server" block of `jarlontravon[.]com`
-- `c_c_blocked_router_firewall.jpeg` — Trend Micro app event log: repeated C2-block events
+
+<img src="virustotal_c_c_url-ip.png" alt="VirusTotal detection for jarlontravon[.]com" width="840">
+
+*VirusTotal detection for jarlontravon[.]com*
+
+
+<img src="testing_other_domains_edgeserver_domains_blockedby_bitdefender.png" alt="Sample's contacted IPs + Bitdefender blocks" width="840">
+
+*Sample's contacted IPs + Bitdefender blocks*
+
+
+<img src="c_c_blocked_router_firewall.png" alt="Trend Micro 'Dangerous Page — C&C Server' block" width="840">
+
+*Trend Micro "Dangerous Page — C&C Server" block*
+
+
+<img src="c_c_blocked_router_firewall.jpeg" alt="Trend Micro app event log of C2 blocks" width="840">
+
+*Trend Micro app event log of C2 blocks*
+
 
 ### 5. Email authentication analysis
 
@@ -247,28 +292,87 @@ Full, copy-pasteable list in **[`IOCs.md`](IOCs.md)**. Summary:
 
 ## Screenshots
 
-| File | What it shows |
-|---|---|
-| `screenshots/first_email.png` | First "Block3 / Emma Martin" recruiting email |
-| `screenshots/calendar_invite_email.png` | "Meeting Request" booking link on `werknova[.]app` |
-| `screenshots/invite_link_email.png` | "Meeting Confirmed" with access code `YU-FPHR-FMN6` |
-| `screenshots/desktop_app_required_mic_lure.png` | The "mic not detected — install desktop app" lure |
-| `screenshots/re-download_package_using_invite_code.png` | `werknova[.]co/download` access-code gate |
-| `screenshots/invite_domain_package_downloadable_with_unique_code.jpeg` | Browser download of `werknova_setup.msi` |
-| `screenshots/downloaded_package_in_recyclebin.jpeg` | Dropper(s) deleted to Recycle Bin |
-| `screenshots/defender_full_scan_result_no_findings.jpeg` | Defender full scan — 0 threats found |
-| `screenshots/c_c_blocked_router_firewall.png` | Trend Micro "Dangerous Page — C&C Server" block |
-| `screenshots/c_c_blocked_router_firewall.jpeg` | Trend Micro app event log of C2 blocks |
-| `screenshots/virustotal_c_c_url-ip.png` | VirusTotal detection for `jarlontravon[.]com` |
-| `screenshots/testing_other_domains_edgeserver_domains_blockedby_bitdefender.png` | Sample's contacted IPs + Bitdefender blocks |
-| `screenshots/HybridAnalysis_company_domain.png` | Hybrid Analysis — `block3[.]co` malicious |
-| `screenshots/HybridAnalysis_invite_domain.png` | Hybrid Analysis — `werknova[.]co` malicious |
-| `screenshots/whois_company_domain.png` | WHOIS — `block3[.]co` |
-| `screenshots/whois_invite_domain.png` | WHOIS — `werknova[.]co` |
-| `screenshots/company_linkedin_almost_empty_suspicious.jpeg` | Hollow "Block3" LinkedIn page |
-| `screenshots/company_domain_employees_linkedin_app_outlook.png` | Outlook contact enrichment — no real footprint |
-| `screenshots/third_email_followup.png` | "Second Opportunity to Connect" re-engagement (1) |
-| `screenshots/second_email_followup.png` | "Second Opportunity to Connect" re-engagement (2) |
+Evidence from the investigation (personal identifiers and third-party faces redacted; attacker indicators preserved).
+
+<img src="first_email.png" alt="First 'Block3 / Emma Martin' recruiting email" width="840">
+
+*First "Block3 / Emma Martin" recruiting email*
+
+<img src="calendar_invite_email.png" alt="'Meeting Request' booking link on werknova[.]app" width="840">
+
+*"Meeting Request" booking link on werknova[.]app*
+
+<img src="invite_link_email.png" alt="'Meeting Confirmed' with access code YU-FPHR-FMN6" width="840">
+
+*"Meeting Confirmed" with access code YU-FPHR-FMN6*
+
+<img src="desktop_app_required_mic_lure.png" alt="The 'mic not detected — install desktop app' lure" width="840">
+
+*The "mic not detected — install desktop app" lure*
+
+<img src="re-download_package_using_invite_code.png" alt="werknova[.]co/download access-code gate" width="840">
+
+*werknova[.]co/download access-code gate*
+
+<img src="invite_domain_package_downloadable_with_unique_code.jpeg" alt="Browser download of werknova_setup.msi" width="840">
+
+*Browser download of werknova_setup.msi*
+
+<img src="downloaded_package_in_recyclebin.jpeg" alt="Dropper deleted to Recycle Bin" width="840">
+
+*Dropper deleted to Recycle Bin*
+
+<img src="defender_full_scan_result_no_findings.jpeg" alt="Microsoft Defender full scan — 0 threats found" width="840">
+
+*Microsoft Defender full scan — 0 threats found*
+
+<img src="c_c_blocked_router_firewall.png" alt="Trend Micro 'Dangerous Page — C&C Server' block" width="840">
+
+*Trend Micro "Dangerous Page — C&C Server" block*
+
+<img src="c_c_blocked_router_firewall.jpeg" alt="Trend Micro app event log of C2 blocks" width="840">
+
+*Trend Micro app event log of C2 blocks*
+
+<img src="virustotal_c_c_url-ip.png" alt="VirusTotal detection for jarlontravon[.]com" width="840">
+
+*VirusTotal detection for jarlontravon[.]com*
+
+<img src="testing_other_domains_edgeserver_domains_blockedby_bitdefender.png" alt="Sample's contacted IPs + Bitdefender blocks" width="840">
+
+*Sample's contacted IPs + Bitdefender blocks*
+
+<img src="HybridAnalysis_company_domain.png" alt="Hybrid Analysis — block3[.]co malicious" width="840">
+
+*Hybrid Analysis — block3[.]co malicious*
+
+<img src="HybridAnalysis_invite_domain.png" alt="Hybrid Analysis — werknova[.]co malicious" width="840">
+
+*Hybrid Analysis — werknova[.]co malicious*
+
+<img src="whois_company_domain.png" alt="WHOIS — block3[.]co (created ~6 weeks before contact)" width="840">
+
+*WHOIS — block3[.]co (created ~6 weeks before contact)*
+
+<img src="whois_invite_domain.png" alt="WHOIS — werknova[.]co (created 3 days before the call)" width="840">
+
+*WHOIS — werknova[.]co (created 3 days before the call)*
+
+<img src="company_linkedin_almost_empty_suspicious.jpeg" alt="Hollow 'Block3' LinkedIn page (0% employee growth)" width="840">
+
+*Hollow "Block3" LinkedIn page (0% employee growth)*
+
+<img src="company_domain_employees_linkedin_app_outlook.png" alt="Outlook contact enrichment — no real footprint" width="840">
+
+*Outlook contact enrichment — no real footprint*
+
+<img src="third_email_followup.png" alt="'Second Opportunity to Connect' re-engagement (1)" width="840">
+
+*"Second Opportunity to Connect" re-engagement (1)*
+
+<img src="second_email_followup.png" alt="'Second Opportunity to Connect' re-engagement (2)" width="840">
+
+*"Second Opportunity to Connect" re-engagement (2)*
 
 ---
 
