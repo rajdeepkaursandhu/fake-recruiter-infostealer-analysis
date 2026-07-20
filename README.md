@@ -88,7 +88,7 @@ flowchart TD
 
 
 
-<img src="company_domain_employees_linkedin_app_outlook.png" alt="Outlook contact enrichment — no real footprint" width="840">
+alt="Outlook contact enrichment — no real footprint" width="840">
 
 *Outlook contact enrichment — no real footprint*
 
@@ -161,10 +161,6 @@ It uses a **Dead Drop Resolver (DDR)**: the real C2 address is Base64-encoded an
 
 *Sample's contacted IPs + Bitdefender blocks*
 
-
-<img src="c_c_blocked_router_firewall.png" alt="Trend Micro 'Dangerous Page — C&C Server' block" width="840">
-
-*Trend Micro "Dangerous Page — C&C Server" block*
 
 
 <img src="c_c_blocked_router_firewall.jpeg" alt="Trend Micro app event log of C2 blocks" width="840">
@@ -298,37 +294,13 @@ Evidence from the investigation (personal identifiers and third-party faces reda
 
 *"Meeting Request" booking link on werknova[.]app*
 
-<img src="invite_link_email.png" alt="'Meeting Confirmed' with access code YU-FPHR-FMN6" width="840">
-
-*"Meeting Confirmed" with access code YU-FPHR-FMN6*
-
 <img src="desktop_app_required_mic_lure.png" alt="The 'mic not detected — install desktop app' lure" width="840">
 
 *The "mic not detected — install desktop app" lure*
 
-<img src="re-download_package_using_invite_code.png" alt="werknova[.]co/download access-code gate" width="840">
-
-*werknova[.]co/download access-code gate*
-
 <img src="invite_domain_package_downloadable_with_unique_code.jpeg" alt="Browser download of werknova_setup.msi" width="840">
 
 *Browser download of werknova_setup.msi*
-
-<img src="downloaded_package_in_recyclebin.jpeg" alt="Dropper deleted to Recycle Bin" width="840">
-
-*Dropper deleted to Recycle Bin*
-
-<img src="defender_full_scan_result_no_findings.jpeg" alt="Microsoft Defender full scan — 0 threats found" width="840">
-
-*Microsoft Defender full scan — 0 threats found*
-
-<img src="c_c_blocked_router_firewall.png" alt="Trend Micro 'Dangerous Page — C&C Server' block" width="840">
-
-*Trend Micro "Dangerous Page — C&C Server" block*
-
-<img src="c_c_blocked_router_firewall.jpeg" alt="Trend Micro app event log of C2 blocks" width="840">
-
-*Trend Micro app event log of C2 blocks*
 
 <img src="virustotal_c_c_url-ip.png" alt="VirusTotal detection for jarlontravon[.]com" width="840">
 
@@ -353,12 +325,6 @@ Evidence from the investigation (personal identifiers and third-party faces reda
 <img src="whois_invite_domain.png" alt="WHOIS — werknova[.]co (created 3 days before the call)" width="840">
 
 *WHOIS — werknova[.]co (created 3 days before the call)*
-
-<img src="company_linkedin_almost_empty_suspicious.jpeg" alt="Hollow 'Block3' LinkedIn page (0% employee growth)" width="840">
-
-*Hollow "Block3" LinkedIn page (0% employee growth)*
-
-<img src="company_domain_employees_linkedin_app_outlook.png" alt="Outlook contact enrichment — no real footprint" width="840">
 
 *Outlook contact enrichment — no real footprint*
 
