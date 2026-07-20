@@ -163,11 +163,6 @@ It uses a **Dead Drop Resolver (DDR)**: the real C2 address is Base64-encoded an
 
 
 
-<img src="c_c_blocked_router_firewall.jpeg" alt="Trend Micro app event log of C2 blocks" width="840">
-
-*Trend Micro app event log of C2 blocks*
-
-
 ### 5. Email authentication analysis
 
 The lure email was parsed with a Message Header Analyzer:
@@ -297,10 +292,6 @@ Evidence from the investigation (personal identifiers and third-party faces reda
 <img src="desktop_app_required_mic_lure.png" alt="The 'mic not detected — install desktop app' lure" width="840">
 
 *The "mic not detected — install desktop app" lure*
-
-<img src="invite_domain_package_downloadable_with_unique_code.jpeg" alt="Browser download of werknova_setup.msi" width="840">
-
-*Browser download of werknova_setup.msi*
 
 <img src="virustotal_c_c_url-ip.png" alt="VirusTotal detection for jarlontravon[.]com" width="840">
 
